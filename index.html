@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="fi" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oulu Men Style — Moderni Parturi Oulun Keskustassa</title>
+    <script src="https://tailwindcss.com"></script>
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'], display: ['Outfit', 'sans-serif'] },
+                    colors: { obsidian: '#0A0A0C', charcoal: '#121216', card: '#18181D', brass: '#C9A96E', brassHover: '#DFC188' }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #0A0A0C; color: #F4F4F6; }
+        .glass-nav { background: rgba(10, 10, 12, 0.85); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255, 255, 255, 0.06); }
+        .subtle-grid { background-image: radial-gradient(rgba(201, 169, 110, 0.08) 1px, transparent 1px); background-size: 32px 32px; }
+    </style>
+</head>
+<body class="antialiased selection:bg-brass selection:text-obsidian">
+
+    <nav class="fixed w-full z-50 glass-nav">
+        <div class="max-w-6xl mx-auto px-5 h-20 flex items-center justify-between">
+            <a href="#" class="font-display font-extrabold text-xl tracking-wider uppercase flex items-center gap-2.5">
+                <span class="w-2.5 h-2.5 bg-brass rounded-full inline-block"></span>
+                Oulu Men Style
+            </a>
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium text-zinc-400">
+                <a href="#palvelut" class="hover:text-white transition">Hinnasto</a>
+                <a href="#meista" class="hover:text-white transition">Liike</a>
+                <a href="#sijainti" class="hover:text-white transition">Sijainti & Aukiolo</a>
+            </div>
+            <button onclick="openModal()" class="bg-brass hover:bg-brassHover text-obsidian font-display font-bold text-sm px-5 py-2.5 rounded-lg transition transform active:scale-95">Varaa aika</button>
+        </div>
+    </nav>
+
+    <section class="relative pt-32 pb-20 md:pt-44 md:pb-32 overflow-hidden subtle-grid">
+        <div class="max-w-6xl mx-auto px-5 relative z-10">
+            <div class="max-w-3xl">
+                <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-zinc-300 mb-6">
+                    <span id="status-dot" class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                    <span id="status-text">Tarkistetaan aukioloa...</span>
+                    <span class="text-zinc-600">|</span>
+                    <span class="text-brass font-semibold">5.0 ★ Google</span>
+                </div>
+                <h1 class="font-display font-extrabold text-4xl sm:text-6xl md:text-7xl tracking-tight leading-[1.05] text-white mb-6">
+                    Tarkkaa jälkeä.<br><span class="text-zinc-500">Ilman kiirettä.</span>
+                </h1>
+                <p class="text-zinc-400 text-lg md:text-xl leading-relaxed max-w-xl mb-10 font-light">
+                    Moderni miesten parturi Oulun ydinkeskustassa osoitteessa <strong class="text-zinc-200 font-medium">Isokatu 37 M 2</strong>. Skin fadet, klassiset leikkaukset ja parran muotoilut huolella toteutettuna.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <button onclick="openModal()" class="bg-brass hover:bg-brassHover text-obsidian font-display font-bold text-base px-8 py-4 rounded-xl transition flex items-center justify-center gap-2 shadow-lg shadow-brass/10">Varaa aika tai kysy vapaita</button>
+                    <a href="#palvelut" class="bg-card hover:bg-zinc-800 border border-white/10 text-white font-display font-semibold text-base px-8 py-4 rounded-xl transition flex items-center justify-center">Katso hinnasto</a>
+                </div>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-16 pt-10 border-t border-white/10">
+                <div><div class="font-display font-bold text-2xl md:text-3xl text-white">5.0 / 5.0</div><div class="text-xs text-zinc-500 uppercase tracking-wider mt-1">Google-arvostelut</div></div>
+                <div><div class="font-display font-bold text-2xl md:text-3xl text-white">Walk-in</div><div class="text-xs text-zinc-500 uppercase tracking-wider mt-1">Myös ilman ajanvarausta</div></div>
+                <div><div class="font-display font-bold text-2xl md:text-3xl text-white">Klo 20</div><div class="text-xs text-zinc-500 uppercase tracking-wider mt-1">Avoinna iltaisin</div></div>
+                <div><div class="font-display font-bold text-2xl md:text-3xl text-white">Isokatu 37</div><div class="text-xs text-zinc-500 uppercase tracking-wider mt-1">Oulun keskusta</div></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="palvelut" class="py-20 md:py-28 bg-charcoal border-y border-white/5">
+        <div class="max-w-6xl mx-auto px-5">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+                <div>
+                    <span class="text-brass font-display font-bold text-xs uppercase tracking-widest">Palvelut</span>
+                    <h2 class="font-display font-bold text-3xl md:text-5xl text-white mt-2">Selkeä hinnasto</h2>
+                </div>
+                <div class="inline-flex bg-obsidian p-1.5 rounded-xl border border-white/10 self-start">
+                    <button onclick="filterMenu('all', this)" class="menu-tab active px-4 py-2 rounded-lg text-xs font-display font-bold bg-brass text-obsidian transition">Kaikki</button>
+                    <button onclick="filterMenu('hair', this)" class="menu-tab px-4 py-2 rounded-lg text-xs font-display font-bold text-zinc-400 hover:text-white transition">Hiukset</button>
+                    <button onclick="filterMenu('beard', this)" class="menu-tab px-4 py-2 rounded-lg text-xs font-display font-bold text-zinc-400 hover:text-white transition">Parta & Paketit</button>
+                </div>
+            </div>
+            <div class="grid md:grid-cols-2 gap-4" id="service-list">
+                <div class="service-item bg-card border border-white/5 hover:border-brass/40 p-6 rounded-2xl transition flex justify-between items-start gap-4" data-category="hair">
+                    <div><div class="flex items-center gap-2.5"><h3 class="font-display font-bold text-lg text-white">Hiustenleikkaus & Fade</h3><span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-brass/15 text-brass">Suosituin</span></div><p class="text-zinc-400 text-sm mt-1.5">Tarkka kone- ja saksityöskentely, skin fade tai klassinen malli sekä niskarajojen siistiminen.</p><span class="inline-block text-xs text-zinc-500 mt-3">Kesto n. 30–40 min</span></div>
+                    <div class="font-display font-extrabold text-xl text-brass shrink-0">28 €</div>
+                </div>
+                <div class="service-item bg-card border border-white/5 hover:border-brass/40 p-6 rounded-2xl transition flex justify-between items-start gap-4" data-category="beard">
+                    <div><h3 class="font-display font-bold text-lg text-white">Hiukset + Parta -paketti</h3><p class="text-zinc-400 text-sm mt-1.5">Täydellinen kokonaisuus: hiustenleikkaus halutulla mallilla sekä parran muotoilu ja rajaus veitsellä.</p><span class="inline-block text-xs text-zinc-500 mt-3">Kesto n. 50–60 min</span></div>
+                    <div class="font-display font-extrabold text-xl text-brass shrink-0">42 €</div>
+                </div>
+                <div class="service-item bg-card border border-white/5 hover:border-brass/40 p-6 rounded-2xl transition flex justify-between items-start gap-4" data-category="beard">
+                    <div><h3 class="font-display font-bold text-lg text-white">Parran muotoilu & rajaus</h3><p class="text-zinc-400 text-sm mt-1.5">Parran tasaus, linjojen tarkka rajaus, kuuma pyyhe ja hoitava partaöljy.</p><span class="inline-block text-xs text-zinc-500 mt-3">Kesto n. 25 min</span></div>
+                    <div class="font-display font-extrabold text-xl text-brass shrink-0">20 €</div>
+                </div>
+                <div class="service-item bg-card border border-white/5 hover:border-brass/40 p-6 rounded-2xl transition flex justify-between items-start gap-4" data-category="hair">
+                    <div><h3 class="font-display font-bold text-lg text-white">Koneajo & Rajaukset</h3><p class="text-zinc-400 text-sm mt-1.5">Koko pään siistiminen koneella sekä tarkat hius- ja niskarajaukset.</p><span class="inline-block text-xs text-zinc-500 mt-3">Kesto n. 20 min</span></div>
+                    <div class="font-display font-extrabold text-xl text-brass shrink-0">20 €</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="meista" class="py-20 md:py-28">
+        <div class="max-w-6xl mx-auto px-5">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-card p-8 rounded-2xl border border-white/5">
+                    <div class="w-10 h-10 rounded-xl bg-brass/15 text-brass flex items-center justify-center font-display font-bold text-lg mb-5">01</div>
+                    <h3 class="font-display font-bold text-xl text-white mb-3">Tarkkuus ennen kaikkea</h3>
+                    <p class="text-zinc-400 text-sm leading-relaxed">Jokainen häivytys ja rajaus tehdään huolella ilman liukuhihnatunnelmaa, jotta lopputulos näyttää hyvältä vielä viikkojenkin päästä.</p>
+                </div>
+                <div class="bg-card p-8 rounded-2xl border border-white/5">
+                    <div class="w-10 h-10 rounded-xl bg-brass/15 text-brass flex items-center justify-center font-display font-bold text-lg mb-5">02</div>
+                    <h3 class="font-display font-bold text-xl text-white mb-3">Helppo tulla keskustaan</h3>
+                    <p class="text-zinc-400 text-sm leading-relaxed">Sijaitsemme keskeisellä paikalla osoitteessa Isokatu 37 M 2. Voit poiketa suoraan sisään tai varmistaa paikkasi etukäteen.</p>
+                </div>
+                <div class="bg-card p-8 rounded-2xl border border-white/5">
+                    <div class="w-10 h-10 rounded-xl bg-brass/15 text-brass flex items-center justify-center font-display font-bold text-lg mb-5">03</div>
+                    <h3 class="font-display font-bold text-xl text-white mb-3">5.0 ★ Asiakastyytyväisyys</h3>
+                    <p class="text-zinc-400 text-sm leading-relaxed">Täydet viiden tähden Google-arvostelut kertovat rennosta ilmapiiristä ja tasaisesta laadusta jokaisella käynnillä.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="sijainti" class="py-20 bg-charcoal border-t border-white/5">
+        <div class="max-w-6xl mx-auto px-5">
+            <div class="grid lg:grid-cols-2 gap-10 items-center">
+                <div>
+                    <span class="text-brass font-display font-bold text-xs uppercase tracking-widest">Yhteystiedot</span>
+                    <h2 class="font-display font-bold text-3xl md:text-4xl text-white mt-2 mb-6">Löydät meidät Isokadulta</h2>
+                    <div class="space-y-4 text-sm text-zinc-300 mb-8">
+                        <div class="flex items-start gap-3"><span class="text-brass font-bold">Osoite:</span><span>Isokatu 37 M 2, 90100 Oulu</span></div>
+                        <div class="flex items-start gap-3"><span class="text-brass font-bold">Aukiolo:</span><div><p>Ma – Pe: 10.00 – 20.00</p><p>La: 10.00 – 17.00</p><p class="text-zinc-500">Su: Suljettu</p></div></div>
+                    </div>
+                    <div class="flex flex-wrap gap-3">
+                        <a href="https://google.com" target="_blank" class="bg-brass hover:bg-brassHover text-obsidian font-display font-bold text-sm px-6 py-3.5 rounded-xl transition">Avaa reittiohjeet (Google Maps)</a>
+                        <button onclick="openModal()" class="bg-card hover:bg-zinc-800 border border-white/10 text-white font-display font-semibold text-sm px-6 py-3.5 rounded-xl transition">Varaa aika</button>
+                    </div>
+                </div>
+                <div class="rounded-2xl overflow-hidden border border-white/10 h-80 bg-card">
+                    <iframe src="https://google.com" width="100%" height="100%" style="border:0; filter: invert(90%) hue-rotate(180deg) contrast(95%);" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-10 border-t border-white/5 text-center text-xs text-zinc-500">
+        <div class="max-w-6xl mx-auto px-5 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <span class="font-display font-bold text-zinc-300 uppercase tracking-wider">Oulu Men Style</span>
+            <span>Isokatu 37 M 2, 90100 Oulu</span>
+        </div>
+    </footer>
+
+    <div id="booking-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/80 backdrop-blur-sm p-4">
+        <div class="bg-card border border-white/10 max-w-md w-full rounded-2xl p-6 md:p-8 relative">
+            <button onclick="closeModal()" class="absolute top-5 right-5 text-zinc-400 hover:text-white text-xl">&times;</button>
+            <span class="text-brass font-display font-bold text-xs uppercase tracking-widest">Ajanvaraus</span>
+            <h3 class="font-display font-bold text-2xl text-white mt-1 mb-2">Varaa aikasi liikkeeseen</h3>
+            <p class="text-zinc-400 text-sm mb-6">Valitse haluamasi palvelu ja lähetä varauspyyntö tai poikkea suoraan paikan päälle osoitteeseen Isokatu 37 M 2.</p>
+            <form onsubmit="handleBooking(event)" class="space-y-4">
+                <div><label class="block text-xs font-medium text-zinc-400 mb-1.5">Palvelu</label><select class="w-full bg-obsidian border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-brass"><option>Hiustenleikkaus & Fade (28 €)</option><option>Hiukset + Parta -paketti (42 €)</option><option>Parran muotoilu & rajaus (20 €)</option><option>Koneajo & Rajaukset (20 €)</option></select></div>
+                <div><label class="block text-xs font-medium text-zinc-400 mb-1.5">Nimi ja puhelinnumero</label><input type="text" required placeholder="Esim. Matti Meikäläinen, 040 123 4567" class="w-full bg-obsidian border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-brass"></div>
+                <button type="submit" class="w-full bg-brass hover:bg-brassHover text-obsidian font-display font-bold text-sm py-3.5 rounded-xl transition">Lähetä ajanvarauspyyntö</button>
+            </form>
+            <div id="booking-success" class="hidden mt-4 p-3 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs text-center">Kiitos! Varauspyyntö vastaanotettu.</div>
+        </div>
+    </div>
+
+    <script>
+        function updateOpenStatus() {
+            const now = new Date();
+            const day = now.getDay();
+            const hour = now.getHours();
+            const dot = document.getElementById('status-dot');
+            const text = document.getElementById('status-text');
+            let isOpen = false;
+            let message = "Suljettu nyt · Avataan klo 10.00";
+            if (day >= 1 && day <= 5 && hour >= 10 && hour < 20) { isOpen = true; message = "Avoinna nyt · Suljetaan klo 20.00"; }
+            else if (day === 6 && hour >= 10 && hour < 17) { isOpen = true; message = "Avoinna nyt · Suljetaan klo 17.00"; }
+            dot.className = isOpen ? "w-2 h-2 rounded-full bg-emerald-400 animate-pulse" : "w-2 h-2 rounded-full bg-amber-400";
+            text.textContent = message;
+        }
+        updateOpenStatus();
+
+        function filterMenu(category, btn) {
+            document.querySelectorAll('.menu-tab').forEach(b => { b.className = "menu-tab px-4 py-2 rounded-lg text-xs font-display font-bold text-zinc-400 hover:text-white transition"; });
+            btn.className = "menu-tab active px-4 py-2 rounded-lg text-xs font-display font-bold bg-brass text-obsidian transition";
+            document.querySelectorAll('.service-item').forEach(item => { item.style.display = (category === 'all' || item.dataset.category === category) ? 'flex' : 'none'; });
+        }
+
+        function openModal() { const m = document.getElementById('booking-modal'); m.classList.remove('hidden'); m.classList.add('flex'); }
+        function closeModal() { const m = document.getElementById('booking-modal'); m.classList.add('hidden'); m.classList.remove('flex'); document.getElementById('booking-success').classList.add('hidden'); }
+        function handleBooking(e) { e.preventDefault(); document.getElementById('booking-success').classList.remove('hidden'); }
+    </script>
+</body>
+</html>
