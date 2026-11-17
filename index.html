@@ -6,83 +6,130 @@
 <title>Oulu Men Style — Moderni Parturi Oulun Keskustassa</title>
 <link href="https://googleapis.com" rel="stylesheet">
 <style>
-  :root { --bg: #0A0A0C; --surface: #131317; --card: #19191F; --border: rgba(255,255,255,0.08); --text: #F4F4F6; --muted: #9CA3AF; --gold: #C9A96E; --gold-hover: #DFC188; }
+  :root {
+    --bg: #0A0A0C;
+    --surface: #131317;
+    --card: #19191F;
+    --border: rgba(255,255,255,0.08);
+    --text: #F4F4F6;
+    --muted: #9CA3AF;
+    --gold: #C9A96E;
+    --gold-hover: #DFC188;
+  }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
-  body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; line-height: 1.6; }
+  body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; line-height: 1.6; -webkit-font-smoothing: antialiased; }
   h1, h2, h3, .brand, .btn { font-family: 'Outfit', sans-serif; }
   .container { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+
+  /* Navigaatio */
   nav { position: fixed; top: 0; width: 100%; z-index: 50; background: rgba(10,10,12,0.88); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
   .nav-inner { height: 76px; display: flex; align-items: center; justify-content: space-between; }
   .brand { font-weight: 800; font-size: 1.15rem; letter-spacing: 0.08em; text-transform: uppercase; color: #fff; text-decoration: none; display: flex; align-items: center; gap: 10px; }
   .brand-dot { width: 10px; height: 10px; background: var(--gold); border-radius: 50%; }
   .nav-links { display: flex; gap: 32px; }
-  .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; }
+  .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: 0.2s; }
+  .nav-links a:hover { color: #fff; }
   @media (max-width: 768px) { .nav-links { display: none; } }
+
+  /* Painikkeet */
   .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 14px 28px; border-radius: 12px; font-weight: 700; font-size: 0.95rem; text-decoration: none; cursor: pointer; border: none; transition: 0.2s; }
   .btn-sm { padding: 10px 20px; font-size: 0.85rem; border-radius: 9px; }
-  .btn-gold { background: var(--gold); color: #0A0A0C; }
+  .btn-gold { background: var(--gold); color: #0A0A0C; box-shadow: 0 8px 24px rgba(201,169,110,0.18); }
+  .btn-gold:hover { background: var(--gold-hover); transform: translateY(-1px); }
   .btn-outline { background: var(--card); color: #fff; border: 1px solid var(--border); }
+  .btn-outline:hover { background: #22222A; }
+
+  /* Hero */
   .hero { padding: 150px 0 90px; background-image: radial-gradient(rgba(201,169,110,0.1) 1px, transparent 1px); background-size: 30px 30px; }
   .badge { display: inline-flex; align-items: center; gap: 10px; padding: 8px 16px; border-radius: 99px; background: rgba(255,255,255,0.04); border: 1px solid var(--border); font-size: 0.8rem; color: #D1D5DB; margin-bottom: 24px; }
-  .dot-live { width: 8px; height: 8px; border-radius: 50%; background: #34D399; }
+  .dot-live { width: 8px; height: 8px; border-radius: 50%; background: #34D399; box-shadow: 0 0 10px #34D399; }
   .dot-closed { width: 8px; height: 8px; border-radius: 50%; background: #FBBF24; }
-  .hero h1 { font-size: clamp(2.6rem, 6vw, 4.6rem); font-weight: 800; line-height: 1.05; margin-bottom: 22px; }
+  .hero h1 { font-size: clamp(2.6rem, 6vw, 4.6rem); font-weight: 800; line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 22px; }
   .hero h1 span { color: #6B7280; }
-  .hero p { color: var(--muted); font-size: 1.12rem; max-width: 560px; margin-bottom: 36px; }
+  .hero p { color: var(--muted); font-size: 1.12rem; max-width: 560px; margin-bottom: 36px; font-weight: 300; }
   .hero-btns { display: flex; flex-wrap: wrap; gap: 14px; }
+
+  /* Tilastopalkki */
   .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 24px; margin-top: 72px; padding-top: 40px; border-top: 1px solid var(--border); }
   .stat-val { font-family: 'Outfit', sans-serif; font-size: 1.75rem; font-weight: 700; color: #fff; }
   .stat-lbl { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; color: #6B7280; margin-top: 4px; }
-</style>
-<style>
+
+  /* Osiot */
   section { padding: 90px 0; }
   .bg-alt { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
   .sec-tag { color: var(--gold); font-family: 'Outfit', sans-serif; font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; }
   .sec-title { font-size: clamp(1.9rem, 4vw, 2.8rem); font-weight: 700; margin: 8px 0 40px; }
+
+  /* Suodatin & Hinnasto */
   .tabs { display: inline-flex; background: var(--bg); padding: 6px; border-radius: 12px; border: 1px solid var(--border); margin-bottom: 32px; gap: 4px; }
-  .tab { padding: 8px 18px; border-radius: 8px; border: none; background: transparent; color: var(--muted); font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 0.85rem; cursor: pointer; }
+  .tab { padding: 8px 18px; border-radius: 8px; border: none; background: transparent; color: var(--muted); font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 0.85rem; cursor: pointer; transition: 0.2s; }
   .tab.active { background: var(--gold); color: #0A0A0C; }
   .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 18px; }
-  .card { background: var(--card); border: 1px solid var(--border); border-radius: 18px; padding: 26px; display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; }
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: 18px; padding: 26px; display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; transition: 0.25s; }
+  .card:hover { border-color: rgba(201,169,110,0.45); transform: translateY(-2px); }
   .card h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 6px; }
   .card p { color: var(--muted); font-size: 0.88rem; }
   .card-meta { display: inline-block; font-size: 0.78rem; color: #6B7280; margin-top: 12px; }
   .price { font-family: 'Outfit', sans-serif; font-size: 1.35rem; font-weight: 800; color: var(--gold); white-space: nowrap; }
-  .pill { font-size: 0.68rem; text-transform: uppercase; padding: 3px 8px; border-radius: 6px; background: rgba(201,169,110,0.15); color: var(--gold); margin-left: 8px; }
+  .pill { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.06em; padding: 3px 8px; border-radius: 6px; background: rgba(201,169,110,0.15); color: var(--gold); margin-left: 8px; vertical-align: middle; }
+
+  /* 3 Korttia */
   .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
   .feature-card { background: var(--card); border: 1px solid var(--border); border-radius: 18px; padding: 32px; }
   .num-box { width: 42px; height: 42px; border-radius: 10px; background: rgba(201,169,110,0.14); color: var(--gold); font-family: 'Outfit', sans-serif; font-weight: 700; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; }
+  .feature-card h3 { font-size: 1.2rem; margin-bottom: 10px; }
+  .feature-card p { color: var(--muted); font-size: 0.9rem; }
+
+  /* Sijainti */
   .loc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; align-items: center; }
   .info-row { display: flex; gap: 14px; margin-bottom: 18px; font-size: 0.95rem; }
   .info-label { color: var(--gold); font-weight: 700; min-width: 75px; }
   .map-box { height: 320px; border-radius: 18px; overflow: hidden; border: 1px solid var(--border); }
+
+  /* Footer */
   footer { padding: 36px 0; border-top: 1px solid var(--border); color: #6B7280; font-size: 0.85rem; }
   .footer-inner { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; }
-  .modal-bg { position: fixed; inset: 0; background: rgba(0,0,0,0.82); display: none; align-items: center; justify-content: center; padding: 20px; z-index: 100; }
+
+  /* Modaali */
+  .modal-bg { position: fixed; inset: 0; background: rgba(0,0,0,0.82); backdrop-filter: blur(6px); display: none; align-items: center; justify-content: center; padding: 20px; z-index: 100; }
   .modal-bg.open { display: flex; }
   .modal { background: var(--card); border: 1px solid var(--border); border-radius: 20px; max-width: 440px; width: 100%; padding: 32px; position: relative; }
   .close-btn { position: absolute; top: 18px; right: 20px; background: none; border: none; color: var(--muted); font-size: 1.6rem; cursor: pointer; }
   .field { margin-bottom: 16px; }
   .field label { display: block; font-size: 0.8rem; color: var(--muted); margin-bottom: 6px; }
   .field input, .field select { width: 100%; padding: 12px 14px; border-radius: 10px; background: var(--bg); border: 1px solid var(--border); color: #fff; font-size: 0.92rem; }
-  .success-msg { display: none; margin-top: 14px; padding: 12px; border-radius: 10px; background: rgba(16,185,129,0.12); color: #34D399; font-size: 0.82rem; text-align: center; }
+  .success-msg { display: none; margin-top: 14px; padding: 12px; border-radius: 10px; background: rgba(16,185,129,0.12); border: 1px solid rgba(16,185,129,0.35); color: #34D399; font-size: 0.82rem; text-align: center; }
 </style>
 </head>
 <body>
+
 <nav>
   <div class="container nav-inner">
     <a href="#" class="brand"><span class="brand-dot"></span>Oulu Men Style</a>
-    <div class="nav-links"><a href="#palvelut">Hinnasto</a><a href="#meista">Liike</a><a href="#sijainti">Sijainti & Aukiolo</a></div>
+    <div class="nav-links">
+      <a href="#palvelut">Hinnasto</a>
+      <a href="#meista">Liike</a>
+      <a href="#sijainti">Sijainti & Aukiolo</a>
+    </div>
     <button onclick="openModal()" class="btn btn-gold btn-sm">Varaa aika</button>
   </div>
 </nav>
+
 <header class="hero">
   <div class="container">
-    <div class="badge"><span id="status-dot" class="dot-live"></span><span id="status-text">Avoinna</span><span>|</span><span style="color:var(--gold); font-weight:600;">5.0 ★ Google</span></div>
+    <div class="badge">
+      <span id="status-dot" class="dot-live"></span>
+      <span id="status-text">Tarkistetaan aukioloa...</span>
+      <span style="color:#4B5563">|</span>
+      <span style="color:var(--gold); font-weight:600;">5.0 ★ Google</span>
+    </div>
     <h1>Tarkkaa jälkeä.<br><span>Ilman kiirettä.</span></h1>
-    <p>Moderni miesten parturi Oulun ydinkeskustassa osoitteessa <strong style="color:#fff;">Isokatu 37 M 2</strong>. Skin fadet, klassiset leikkaukset ja parran muotoilut huolella toteutettuna.</p>
-    <div class="hero-btns"><button onclick="openModal()" class="btn btn-gold">Varaa aika tai kysy vapaita →</button><a href="#palvelut" class="btn btn-outline">Katso hinnasto</a></div>
+    <p>Moderni miesten parturi Oulun ydinkeskustassa osoitteessa <strong style="color:#fff;font-weight:500;">Isokatu 37 M 2</strong>. Skin fadet, klassiset leikkaukset ja parran muotoilut huolella toteutettuna.</p>
+    <div class="hero-btns">
+      <button onclick="openModal()" class="btn btn-gold">Varaa aika tai kysy vapaita →</button>
+      <a href="#palvelut" class="btn btn-outline">Katso hinnasto</a>
+    </div>
     <div class="stats">
       <div><div class="stat-val">5.0 / 5.0</div><div class="stat-lbl">Google-arvostelut</div></div>
       <div><div class="stat-val">Walk-in</div><div class="stat-lbl">Myös ilman ajanvarausta</div></div>
@@ -91,6 +138,7 @@
     </div>
   </div>
 </header>
+
 <section id="palvelut" class="bg-alt">
   <div class="container">
     <span class="sec-tag">Palvelut</span>
@@ -100,68 +148,77 @@
       <button class="tab" onclick="filterMenu('hair', this)">Hiukset</button>
       <button class="tab" onclick="filterMenu('beard', this)">Parta & Paketit</button>
     </div>
-    <div class="grid-2">
-      <div class="card service-item" data-cat="hair"><div><h3>Hiustenleikkaus & Fade <span class="pill">Suosituin</span></h3><p>Tarkka kone- ja saksityöskentely, skin fade tai klassinen malli sekä niskarajojen siistiminen.</p><span class="card-meta">Kesto n. 30–40 min</span></div><div class="price">28 €</div></div>
-      <div class="card service-item" data-cat="beard"><div><h3>Hiukset + Parta -paketti</h3><p>Täydellinen kokonaisuus: hiustenleikkaus halutulla mallilla sekä parran muotoilu ja rajaus veitsellä.</p><span class="card-meta">Kesto n. 50–60 min</span></div><div class="price">42 €</div></div>
-      <div class="card service-item" data-cat="beard"><div><h3>Parran muotoilu & rajaus</h3><p>Parran tasaus, linjojen tarkka rajaus, kuuma pyyhe ja hoitava partaöljy.</p><span class="card-meta">Kesto n. 25 min</span></div><div class="price">20 €</div></div>
-      <div class="card service-item" data-cat="hair"><div><h3>Koneajo & Rajaukset</h3><p>Koko pään siistiminen koneella sekä tarkat hius- ja niskarajaukset.</p><span class="card-meta">Kesto n. 20 min</span></div><div class="price">20 €</div></div>
-    </div>
-  </div>
-</section>
-<section id="meista">
-  <div class="container">
-    <div class="grid-3">
-      <div class="feature-card"><div class="num-box">01</div><h3>Tarkkuus ennen kaikkea</h3><p>Jokainen häivytys ja rajaus tehdään huolella ilman liukuhihnatunnelmaa, jotta lopputulos näyttää hyvältä vielä viikkojenkin päästä.</p></div>
-      <div class="feature-card"><div class="num-box">02</div><h3>Helppo tulla keskustaan</h3><p>Sijaitsemme keskeisellä paikalla osoitteessa Isokatu 37 M 2. Voit poiketa suoraan sisään tai varmistaa paikkasi etukäteen.</p></div>
-      <div class="feature-card"><div class="num-box">03</div><h3>5.0 ★ Asiakastyytyväisyys</h3><p>Täydet viiden tähden Google-arvostelut kertovat rennosta ilmapiiristä ja tasaisesta laadusta jokaisella käynnillä.</p></div>
-    </div>
-  </div>
-</section>
-<section id="sijainti" class="bg-alt">
-  <div class="container">
-    <div class="loc-grid">
-      <div>
-        <span class="sec-tag">Yhteystiedot</span>
-        <h2 class="sec-title" style="margin-bottom:24px;">Löydät meidät Isokadulta</h2>
-        <div class="info-row"><span class="info-label">Osoite:</span><span>Isokatu 37 M 2, 90100 Oulu</span></div>
-        <div class="info-row"><span class="info-label">Aukiolo:</span><div><p>Ma – Pe: 10.00 – 20.00</p><p>La: 10.00 – 17.00</p><p style="color:#6B7280">Su: Suljettu</p></div></div>
-        <div class="hero-btns" style="margin-top:28px;"><a href="https://google.com" target="_blank" class="btn btn-gold">Avaa reittiohjeet</a><button onclick="openModal()" class="btn btn-outline">Varaa aika</button></div>
-      </div>
-      <div class="map-box"><iframe src="https://google.com" width="100%" height="100%" style="border:0; filter:invert(90%) hue-rotate(180deg) contrast(95%);" loading="lazy"></iframe></div>
-    </div>
-  </div>
-</section>
-<footer><div class="container footer-inner"><strong style="color:#D1D5DB;">OULU MEN STYLE</strong><span>Isokatu 37 M 2, 90100 Oulu</span></div></footer>
-<div id="booking-modal" class="modal-bg">
-  <div class="modal">
-    <button class="close-btn" onclick="closeModal()">&times;</button>
-    <span class="sec-tag">Ajanvaraus</span>
-    <h3 style="font-size:1.5rem; margin:6px 0 10px;">Varaa aikasi liikkeeseen</h3>
-    <form onsubmit="handleBooking(event)">
-      <div class="field"><label>Palvelu</label><select><option>Hiustenleikkaus & Fade (28 €)</option><option>Hiukset + Parta -paketti (42 €)</option><option>Parran muotoilu & rajaus (20 €)</option><option>Koneajo & Rajaukset (20 €)</option></select></div>
-      <div class="field"><label>Nimi ja puhelinnumero</label><input type="text" required placeholder="Esim. Matti Meikäläinen, 040 123 4567"></div>
-      <button type="submit" class="btn btn-gold" style="width:100%;">Lähetä ajanvarauspyyntö</button>
-    </form>
-    <div id="booking-success" class="success-msg">Kiitos! Varauspyyntö vastaanotettu.</div>
-  </div>
-</div>
-<script>
-  function updateStatus() {
-    const now = new Date(), day = now.getDay(), h = now.getHours();
-    const dot = document.getElementById('status-dot'), txt = document.getElementById('status-text');
-    let open = (day >= 1 && day <= 5 && h >= 10 && h < 20) || (day === 6 && h >= 10 && h < 17);
-    dot.className = open ? 'dot-live' : 'dot-closed';
-    txt.textContent = open ? (day === 6 ? 'Avoinna nyt · Suljetaan klo 17.00' : 'Avoinna nyt · Suljetaan klo 20.00') : 'Suljettu nyt · Avataan klo 10.00';
-  }
-  updateStatus();
-  function filterMenu(cat, btn) {
-    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-    btn.classList.add('active');
-    document.querySelectorAll('.service-item').forEach(el => { el.style.display = (cat === 'all' || el.dataset.cat === cat) ? 'flex' : 'none'; });
-  }
-  function openModal() { document.getElementById('booking-modal').classList.add('open'); }
-  function closeModal() { document.getElementById('booking-modal').classList.remove('open'); document.getElementById('booking-success').style.display = 'none'; }
-  function handleBooking(e) { e.preventDefault(); document.getElementById('booking-success').style.display = 'block'; }
-</script>
-</body>
-</html>
+
+Hiustenleikkaus & Fade SuosituinTarkka kone- ja saksityöskentely, skin fade tai klassinen malli sekä niskarajojen siistiminen.Kesto n. 30–40 min
+28 €
+
+
+Hiukset + Parta -pakettiTäydellinen kokonaisuus: hiustenleikkaus halutulla mallilla sekä parran muotoilu ja rajaus veitsellä.Kesto n. 50–60 min
+42 €
+
+
+Parran muotoilu & rajausParran tasaus, linjojen tarkka rajaus, kuuma pyyhe ja hoitava partaöljy.Kesto n. 25 min
+20 €
+
+
+Koneajo & RajauksetKoko pään siistiminen koneella sekä tarkat hius- ja niskarajaukset.Kesto n. 20 min
+20 €
+
+
+Junior-leikkaus (alle 15 v.)Siisti ja moderni leikkaus nuorille asiakkaille.Kesto n. 30 min
+23 €
+
+
+Kulmakarvojen siistiminenHuoliteltu viimeistely kasvojen ilmeelle leikkauksen yhteydessä tai erikseen.Kesto n. 10 min
+10 €
+
+
+01Tarkkuus ennen kaikkeaJokainen häivytys ja rajaus tehdään huolella ilman liukuhihnatunnelmaa, jotta lopputulos näyttää hyvältä vielä viikkojenkin päästä.
+02Helppo tulla keskustaanSijaitsemme keskeisellä paikalla osoitteessa Isokatu 37 M 2. Voit poiketa suoraan sisään tai varmistaa paikkasi etukäteen.
+035.0 ★ AsiakastyytyväisyysTäydet viiden tähden Google-arvostelut kertovat rennosta ilmapiiristä ja tasaisesta laadusta jokaisella käynnillä.
+
+Yhteystiedot
+Löydät meidät Isokadulta
+Osoite:Isokatu 37 M 2, 90100 Oulu
+Aukiolo:Ma – Pe: 10.00 – 20.00La: 10.00 – 17.00Su: Suljettu
+
+Avaa reittiohjeet
+Varaa aika
+
+
+
+
+
+
+OULU MEN STYLE
+Isokatu 37 M 2, 90100 Oulu
+
+×
+Ajanvaraus
+Varaa aikasi liikkeeseen
+Valitse palvelu ja jätä yhteystietosi, tai poikkea suoraan osoitteeseen Isokatu 37 M 2.
+
+PalveluHiustenleikkaus & Fade (28 €)Hiukset + Parta -paketti (42 €)Parran muotoilu & rajaus (20 €)Koneajo & Rajaukset (20 €)
+Nimi ja puhelinnumero
+Lähetä ajanvarauspyyntö
+
+Kiitos! Varauspyyntö vastaanotettu.
+
+function updateStatus() {
+const now = new Date(), day = now.getDay(), h = now.getHours();
+const dot = document.getElementById('status-dot'), txt = document.getElementById('status-text');
+let open = (day >= 1 && day <= 5 && h >= 10 && h < 20) || (day === 6 && h >= 10 && h < 17);
+dot.className = open ? 'dot-live' : 'dot-closed';
+txt.textContent = open ? (day === 6 ? 'Avoinna nyt · Suljetaan klo 17.00' : 'Avoinna nyt · Suljetaan klo 20.00') : 'Suljettu nyt · Avataan klo 10.00';
+}
+updateStatus();
+function filterMenu(cat, btn) {
+document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+btn.classList.add('active');
+document.querySelectorAll('.service-item').forEach(el => {
+el.style.display = (cat === 'all' || el.dataset.cat === cat) ? 'flex' : 'none';
+});
+}
+function openModal() { document.getElementById('booking-modal').classList.add('open'); }
+function closeModal() { document.getElementById('booking-modal').classList.remove('open'); document.getElementById('booking-success').style.display = 'none'; }
+function handleBooking(e) { e.preventDefault(); document.getElementById('booking-success').style.display = 'block'; }
